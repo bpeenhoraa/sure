@@ -107,7 +107,7 @@
 <h1>Heyyy Babyyy 🤭💋</h1>
 <p class="question">Will you be my Valentine 💍</p>
 
-<img src="dudu.jpeg" alt="Dudu with Rose">
+<img src="both.jpg" alt="Dudu with Rose">
 <br>
 <video src="bubu.mp4" autoplay loop muted></video>
 
@@ -143,10 +143,25 @@ function playMusic() {
 
 function yes() {
     playMusic();
+    
+    // Hide original image/video for effect
+    document.querySelector('img').style.display = 'none';
+    document.querySelector('video').style.display = 'none';
+
+    // Romantic message
     document.getElementById("response").innerHTML =
-        "Iknewww you'll say yes babyyyyyyy Aalabiuuuuuuuuuuuuuuuu😚💍<br>" +
+        "Iknewww you'll say yes babyyyyyyy 😚💍<br>" +
         "I'm so lucky to have youuuuuuuu 😚💋<br>" +
         "<b>21st May 2025 to forever 😚💍</b>";
+
+    // Show combined photo bigger
+    const photo = document.createElement("img");
+    photo.src = "both.jpg"; // combined photo of you & her
+    photo.style.width = "300px";
+    photo.style.borderRadius = "20px";
+    photo.style.marginTop = "20px";
+    photo.style.boxShadow = "0 10px 20px rgba(0,0,0,0.2)";
+    document.body.appendChild(photo);
 }
 
 function no() {
@@ -191,4 +206,3 @@ document.body.addEventListener("click", () => {
 
 </body>
 </html>
-
