@@ -2,22 +2,101 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Hey Sanjuuuu ❤️</title>
+<title>Hey Sanjuuuu 💍</title>
+
+<!-- Cute Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
 <style>
     body {
+        margin: 0;
+        padding: 0;
         text-align: center;
-        font-family: Arial, sans-serif;
-        background-color: #fff0f5;
+        font-family: 'Arial', sans-serif;
+        background: linear-gradient(135deg, #ffe6f0, #fff0f5);
+        overflow-x: hidden;
     }
-    h1 { color: #ff4d6d; font-size: 50px; margin-top: 50px; }
-    p { font-size: 22px; margin: 20px; }
-    button { padding: 15px 30px; font-size: 20px; margin: 15px; border: none; border-radius: 10px; cursor: pointer; }
-    .yes { background-color: #4CAF50; color: white; }
-    .no { background-color: #f44336; color: white; }
-    img { width: 250px; margin: 20px; border-radius: 15px; }
-    video { width: 150px; margin: 15px; border-radius: 10px; }
+
+    h1 {
+        font-family: 'Pacifico', cursive;
+        color: #ff2e63;
+        font-size: 48px;
+        margin-top: 40px;
+    }
+
+    .question {
+        font-size: 26px;
+        font-weight: bold;
+        color: #ff4d6d;
+    }
+
+    img {
+        width: 260px;
+        margin: 20px;
+        border-radius: 20px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    video {
+        width: 150px;
+        margin: 10px;
+        border-radius: 15px;
+    }
+
+    button {
+        padding: 15px 35px;
+        font-size: 22px;
+        margin: 15px;
+        border: none;
+        border-radius: 15px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .yes {
+        background: #4CAF50;
+        color: white;
+    }
+
+    .no {
+        background: #f44336;
+        color: white;
+    }
+
+    button:hover {
+        transform: scale(1.15);
+        box-shadow: 0 0 20px #ff4d6d;
+    }
+
+    #response {
+        margin-top: 25px;
+        font-size: 22px;
+        color: #ff2e63;
+        font-weight: bold;
+    }
+
+    footer {
+        margin-top: 40px;
+        font-size: 18px;
+        color: #ff4d6d;
+        font-family: 'Pacifico', cursive;
+    }
+
+    /* Floating hearts */
+    @keyframes floatUp {
+        0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+        100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+    }
+
+    .heart {
+        position: fixed;
+        font-size: 24px;
+        animation: floatUp 5s linear infinite;
+        pointer-events: none;
+    }
 </style>
 </head>
+
 <body onclick="playMusic()">
 
 <!-- Background music -->
@@ -25,30 +104,34 @@
     <source src="music.mpeg" type="audio/mpeg">
 </audio>
 
-<h1>Hey Sanjuuuu ❤️</h1>
-<p>Will You Be My Valentine?</p>
-<p>Tap anywhere or press YES 👇</p>
+<h1>Hey Sanjuuuu 😚💍</h1>
+<p class="question">Will you be my Valentine 💍</p>
 
 <img src="dudu.jpeg" alt="Dudu with Rose">
+<br>
 <video src="bubu.mp4" autoplay loop muted></video>
 
 <br><br>
+
 <button class="yes" onclick="yes()">YES</button>
 <button class="no" id="noBtn" onclick="no()">NO</button>
 
 <h2 id="response"></h2>
-<p>Made with ❤️ for Sanjuuuu</p>
+
+<footer>
+    Proposal for Vampuuuuuu from her Bhoot 😚💍
+</footer>
 
 <script>
 let musicPlayed = false;
 let noCount = 0;
 
 const noMessages = [
-    "No?? Are you sure? 😅",
-    "Come on, don’t be shy ❤️",
-    "Please say YES 😍",
-    "I won’t give up 😎",
-    "Still NO? 😭"
+    "Aaisa mat kahiye na bachhha 🥹💋",
+    "Ab sanbi aur bisan ka kyaa hoga? 😭💋",
+    "Mamuu laii vandinxu pakhhh 🥹💋",
+    "Yes boldijiye 🥹💋",
+    "Jaldi yes bolooo 🔪"
 ];
 
 function playMusic() {
@@ -60,8 +143,10 @@ function playMusic() {
 
 function yes() {
     playMusic();
-    document.getElementById("response").innerText =
-    "Yayyyy 😍 You said YES! I knew it ❤️ I love you so much!";
+    document.getElementById("response").innerHTML =
+        "Iknewww you'll say yes babyyyyyyy 😚💍<br>" +
+        "I'm so lucky to have youuuuuuuu 😚💋<br>" +
+        "<b>21st May 2025 to forever 😚💍</b>";
 }
 
 function no() {
@@ -69,15 +154,39 @@ function no() {
     noCount++;
 
     if (noCount <= 5) {
-        // Show random playful message
         const msg = noMessages[Math.floor(Math.random() * noMessages.length)];
         document.getElementById("response").innerText = msg;
     } else {
-        // 6th time: remove NO button
         document.getElementById("noBtn").style.display = "none";
-        document.getElementById("response").innerText = "Hmm... looks like only YES is left 😏";
+        document.getElementById("response").innerText =
+            "Hehe 😏 now only YES is left 💍";
     }
 }
+
+/* Floating hearts */
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerText = "❤️";
+    heart.style.left = Math.random() * window.innerWidth + "px";
+    heart.style.fontSize = (12 + Math.random() * 30) + "px";
+    heart.style.animationDuration = (3 + Math.random() * 5) + "s";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 5000);
+}
+setInterval(createHeart, 300);
+
+/* Tap pop hearts */
+document.body.addEventListener("click", () => {
+    const pop = document.createElement("div");
+    pop.innerText = "💖";
+    pop.style.position = "absolute";
+    pop.style.left = Math.random() * window.innerWidth + "px";
+    pop.style.top = Math.random() * window.innerHeight + "px";
+    pop.style.fontSize = "24px";
+    document.body.appendChild(pop);
+    setTimeout(() => pop.remove(), 1000);
+});
 </script>
 
 </body>
