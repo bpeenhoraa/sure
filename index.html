@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hey Sanjuuuu ❤️</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #fff0f5;
+        }
+        h1 {
+            color: #ff4d6d;
+        }
+        button {
+            padding: 12px 28px;
+            font-size: 18px;
+            margin: 10px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        .yes {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .no {
+            background-color: #f44336;
+            color: white;
+        }
+        img {
+            width: 200px;
+            margin: 10px;
+        }
+        .gif {
+            width: 150px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body onclick="playMusic()">
+
+<!-- 🔊 Background Music -->
+<audio id="bgMusic" loop>
+    <source src="music.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+<h1>Hey Sanjuuuu ❤️</h1>
+<p>Will You Be My Valentine?</p>
+<p>Tap anywhere or press YES 👇</p>
+
+<!-- Main image -->
+<img src="dudu.jpg" alt="Dudu with Rose">
+
+<!-- GIF -->
+<img src="bubu.mp4" class="mp4" alt="Bubu GIF">
+
+<br><br>
+
+<button class="yes" onclick="yes()">YES</button>
+<button class="no" onclick="no()">NO</button>
+
+<h2 id="response"></h2>
+
+<p>Made with ❤️ for Sanjuuuu</p>
+
+<script>
+    let musicPlayed = false;
+
+    function playMusic() {
+        if (!musicPlayed) {
+            document.getElementById("bgMusic").play();
+            musicPlayed = true;
+        }
+    }
+
+    function yes() {
+        playMusic();
+        document.getElementById("response").innerText =
+        "Yayyyy 😍 You said YES! I knew it ❤️ I love you so much!";
+    }
+
+    function no() {
+        playMusic();
+        document.getElementById("response").innerText =
+        "It's okay ❤️ You are still special to me.";
+    }
+</script>
+
+</body>
+</html>
