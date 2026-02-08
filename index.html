@@ -1,91 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Hey Sanjuuuu ❤️</title>
-    <style>
-        body {
-            text-align: center;
-            font-family: Arial, sans-serif;
-            background-color: #fff0f5;
-        }
-        h1 {
-            color: #ff4d6d;
-        }
-        button {
-            padding: 12px 28px;
-            font-size: 18px;
-            margin: 10px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-        }
-        .yes {
-            background-color: #4CAF50;
-            color: white;
-        }
-        .no {
-            background-color: #f44336;
-            color: white;
-        }
-        img {
-            width: 200px;
-            margin: 10px;
-        }
-        .gif {
-            width: 150px;
-            margin: 10px;
-        }
-    </style>
+<meta charset="UTF-8">
+<title>Hey Sanjuuuu ❤️</title>
+<style>
+    body {
+        text-align: center;
+        font-family: Arial, sans-serif;
+        background-color: #fff0f5;
+    }
+    h1 { color: #ff4d6d; font-size: 50px; margin-top: 50px; }
+    p { font-size: 22px; margin: 20px; }
+    button { padding: 15px 30px; font-size: 20px; margin: 15px; border: none; border-radius: 10px; cursor: pointer; }
+    .yes { background-color: #4CAF50; color: white; }
+    .no { background-color: #f44336; color: white; }
+    img { width: 250px; margin: 20px; border-radius: 15px; }
+    video { width: 150px; margin: 15px; border-radius: 10px; }
+</style>
 </head>
 <body onclick="playMusic()">
 
-<!-- 🔊 Background Music -->
+<!-- Background music -->
 <audio id="bgMusic" loop>
-    <source src="music.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
+    <source src="music.mpeg" type="audio/mpeg">
 </audio>
 
 <h1>Hey Sanjuuuu ❤️</h1>
 <p>Will You Be My Valentine?</p>
 <p>Tap anywhere or press YES 👇</p>
 
-<!-- Main image -->
-<img src="dudu.jpg" alt="Dudu with Rose">
-
-<!-- GIF -->
-<img src="bubu.mp4" class="mp4" alt="Bubu GIF">
+<img src="dudu.jpeg" alt="Dudu with Rose">
+<video src="bubu.mp4" autoplay loop muted></video>
 
 <br><br>
-
 <button class="yes" onclick="yes()">YES</button>
-<button class="no" onclick="no()">NO</button>
+<button class="no" id="noBtn" onclick="no()">NO</button>
 
 <h2 id="response"></h2>
-
 <p>Made with ❤️ for Sanjuuuu</p>
 
 <script>
-    let musicPlayed = false;
+let musicPlayed = false;
+let noCount = 0;
 
-    function playMusic() {
-        if (!musicPlayed) {
-            document.getElementById("bgMusic").play();
-            musicPlayed = true;
-        }
-    }
+const noMessages = [
+    "No?? Are you sure? 😅",
+    "Come on, don’t be shy ❤️",
+    "Please say YES 😍",
+    "I won’t give up 😎",
+    "Still NO? 😭"
+];
 
-    function yes() {
-        playMusic();
-        document.getElementById("response").innerText =
-        "Yayyyy 😍 You said YES! I knew it ❤️ I love you so much!";
+function playMusic() {
+    if (!musicPlayed) {
+        document.getElementById("bgMusic").play();
+        musicPlayed = true;
     }
+}
 
-    function no() {
-        playMusic();
-        document.getElementById("response").innerText =
-        "It's okay ❤️ You are still special to me.";
+function yes() {
+    playMusic();
+    document.getElementById("response").innerText =
+    "Yayyyy 😍 You said YES! I knew it ❤️ I love you so much!";
+}
+
+function no() {
+    playMusic();
+    noCount++;
+
+    if (noCount <= 5) {
+        // Show random playful message
+        const msg = noMessages[Math.floor(Math.random() * noMessages.length)];
+        document.getElementById("response").innerText = msg;
+    } else {
+        // 6th time: remove NO button
+        document.getElementById("noBtn").style.display = "none";
+        document.getElementById("response").innerText = "Hmm... looks like only YES is left 😏";
     }
+}
 </script>
 
 </body>
