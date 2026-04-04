@@ -13,13 +13,13 @@
         padding: 0;
         text-align: center;
         font-family: 'Arial', sans-serif;
-        background: linear-gradient(135deg, #ffe6f0, #fff0f5);
+        background: linear-gradient(135deg, #cce7ff, #e0f7ff); /* sky blue gradient */
         overflow-x: hidden;
     }
 
     h1 {
         font-family: 'Pacifico', cursive;
-        color: #ff2e63;
+        color: #0099ff; /* deep sky blue */
         font-size: 48px;
         margin-top: 40px;
     }
@@ -27,7 +27,7 @@
     .question {
         font-size: 26px;
         font-weight: bold;
-        color: #ff4d6d;
+        color: #33ccff; /* lighter sky blue */
     }
 
     img {
@@ -51,34 +51,55 @@
         border-radius: 15px;
         cursor: pointer;
         transition: 0.3s;
+        color: white;
+        font-weight: bold;
     }
 
+    /* YES button with magical glow */
     .yes {
-        background: #4CAF50;
-        color: white;
+        background: linear-gradient(45deg, #6a11cb, #2575fc);
+        position: relative;
+        box-shadow: 0 0 15px #6a11cb, 0 0 25px #2575fc;
+        animation: glowPulse 2s infinite alternate;
     }
 
+    @keyframes glowPulse {
+        0% {
+            box-shadow: 0 0 15px #6a11cb, 0 0 25px #2575fc;
+        }
+        50% {
+            box-shadow: 0 0 25px #8e44ad, 0 0 35px #3498db;
+        }
+        100% {
+            box-shadow: 0 0 15px #6a11cb, 0 0 25px #2575fc;
+        }
+    }
+
+    .yes:hover {
+        transform: scale(1.2);
+        box-shadow: 0 0 30px #8e44ad, 0 0 50px #3498db;
+    }
+
+    /* NO button soft coral gradient */
     .no {
-        background: #f44336;
-        color: white;
+        background: linear-gradient(45deg, #ff5f6d, #ffc371);
     }
 
     button:hover {
         transform: scale(1.15);
-        box-shadow: 0 0 20px #ff4d6d;
     }
 
     #response {
         margin-top: 25px;
         font-size: 22px;
-        color: #ff2e63;
+        color: #0099ff;
         font-weight: bold;
     }
 
     footer {
         margin-top: 40px;
         font-size: 18px;
-        color: #ff4d6d;
+        color: #33ccff;
         font-family: 'Pacifico', cursive;
     }
 
@@ -143,22 +164,18 @@ function playMusic() {
 
 function yes() {
     playMusic();
-    
-    // Hide original image/video for effect
     document.querySelector('img').style.display = 'none';
     document.querySelector('video').style.display = 'none';
 
-    // Romantic message
     document.getElementById("response").innerHTML =
         "I'm really sorry for everything I did yesterday and today 🥹<br>" +
-"I never meant to hurt you, and I regret my mistakes 🥹<br>" +
-"You mean so much to me, more than I can explain anee aba dekhi pakka repeat hunna husss saneyyyyy ❤️<br>" +
-"Please sanuuuuuuuu forgive me and give me one more chance 🙏<br>" +
-"I promise to do better and make everything right husssss ?🥹 Iloveeeeeeyouuuuuuuu🥹🌹";
+        "I never meant to hurt you, and I regret my mistakes 🥹<br>" +
+        "You mean so much to me, more than I can explain anee aba dekhi pakka repeat hunna husss saneyyyyy ❤️<br>" +
+        "Please sanuuuuuuuu forgive me and give me one more chance 🙏<br>" +
+        "I promise to do better and make everything right husssss ?🥹 Iloveeeeeeyouuuuuuuu🥹🌹";
 
-    // Show combined photo bigger
     const photo = document.createElement("img");
-    photo.src = "both.jpg"; // combined photo of you & her
+    photo.src = "both.jpg";
     photo.style.width = "300px";
     photo.style.borderRadius = "20px";
     photo.style.marginTop = "20px";
@@ -180,7 +197,6 @@ function no() {
     }
 }
 
-/* Floating hearts */
 function createHeart() {
     const heart = document.createElement("div");
     heart.className = "heart";
@@ -193,7 +209,6 @@ function createHeart() {
 }
 setInterval(createHeart, 300);
 
-/* Tap pop hearts */
 document.body.addEventListener("click", () => {
     const pop = document.createElement("div");
     pop.innerText = "💖";
