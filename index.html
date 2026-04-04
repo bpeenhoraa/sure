@@ -19,7 +19,7 @@
 
     h1 {
         font-family: 'Pacifico', cursive;
-        color: #0099ff; /* deep sky blue */
+        color: #0099ff;
         font-size: 48px;
         margin-top: 40px;
     }
@@ -27,14 +27,27 @@
     .question {
         font-size: 26px;
         font-weight: bold;
-        color: #33ccff; /* lighter sky blue */
+        color: #33ccff;
     }
 
-    img {
-        width: 260px;
-        margin: 20px;
-        border-radius: 20px;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    .photos-container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 20px;
+        margin: 20px 0;
+    }
+
+    .photos-container img {
+        width: 250px;
+        border-radius: 25px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .photos-container img:hover {
+        transform: scale(1.05);
+        box-shadow: 0 12px 25px rgba(0,0,0,0.35);
     }
 
     video {
@@ -122,14 +135,17 @@
 
 <!-- Background music -->
 <audio id="bgMusic" loop>
-    <source src="music.mpeg" type="audio/mpeg">
+    <source src="song.mp3" type="audio/mpeg">
 </audio>
 
 <h1>Heyyy Babyyy 🥹💋</h1>
 <p class="question">Will you forgive me sanaaaaaa?🥹💋</p>
 
-<img src="both.jpg" alt="Dudu with Rose">
-<br>
+<div class="photos-container">
+    <img src="12.jpeg" alt="Photo 12">
+    <img src="13.jpeg" alt="Photo 13">
+</div>
+
 <video src="bubu.mp4" autoplay loop muted></video>
 
 <br><br>
@@ -164,25 +180,15 @@ function playMusic() {
 
 function yes() {
     playMusic();
-    document.querySelector('img').style.display = 'none';
+    document.querySelector('.photos-container').style.display = 'none';
     document.querySelector('video').style.display = 'none';
 
     document.getElementById("response").innerHTML =
         "I'm really sorry for everything I did yesterday and today 🥹<br>" +
         "I never meant to hurt you, and I regret my mistakes 🥹<br>" +
-        "You mean so much to me, more than I can explain 
-        anee aba dekhi pakka repeat hunna husss saneyyyyy ❤️<br>" +
+        "You mean so much to me, more than I can explain anee aba dekhi pakka repeat hunna husss saneyyyyy ❤️<br>" +
         "Please sanuuuuuuuu forgive me and give me one more chance 🙏<br>" +
-        "I promise to do better and make everything right husssss ?🥹 
-        Iloveeeeeeyouuuuuuuu🥹🌹";
-
-    const photo = document.createElement("img");
-    photo.src = "both.jpg";
-    photo.style.width = "300px";
-    photo.style.borderRadius = "20px";
-    photo.style.marginTop = "20px";
-    photo.style.boxShadow = "0 10px 20px rgba(0,0,0,0.2)";
-    document.body.appendChild(photo);
+        "I promise to do better and make everything right husssss ?🥹 Iloveeeeeeyouuuuuuuu🥹🌹";
 }
 
 function no() {
